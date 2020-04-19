@@ -12,8 +12,17 @@ class ContentBox extends React.Component {
 
         const xhr = new XMLHttpRequest();
         xhr.open('post', this.props.submitUrl, true);
+        xhr.onloadend = () => this.downloadFile(xhr.response);
         xhr.send(data);
-        var response = xhr.response;
+    }
+    downloadFile(response) {
+        const element = document.createElement("a");
+        const file = new Blob([response],
+            { type: 'text/plain;charset=utf-8' });
+        element.href = URL.createObjectURL(file);
+        element.download = "result.txt";
+        document.body.appendChild(element);
+        element.click();
     }
     render() {
         return (

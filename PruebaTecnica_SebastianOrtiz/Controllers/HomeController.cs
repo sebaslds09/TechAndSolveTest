@@ -39,8 +39,8 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
 
 
             string fileName = Server.MapPath("~/") + @"Files\result.txt";
-            string contentType = "text/plain";
-
+            string contentType = "application/octet-stream";
+            
             return new FilePathResult(fileName, contentType);
         }
 
