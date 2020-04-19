@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SOA_TechAndSolveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ExecStamp">
+          <Key>
+            <PropertyRef Name="IdExecStamp" />
+          </Key>
+          <Property Name="IdExecStamp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identification" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="DateStamp" Type="date" Nullable="false" />
+          <Property Name="TimeStamp" Type="time" Precision="7" Nullable="false" />
+          <Property Name="WorkingDays" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExecStamp_Details">
+          <Key>
+            <PropertyRef Name="IdExecStamp_Details" />
+          </Key>
+          <Property Name="IdExecStamp_Details" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExecStamp" Type="int" Nullable="false" />
+          <Property Name="ElementsQuantity" Type="int" Nullable="false" />
+          <Property Name="ElementList" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TripsQuantity" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ExecStamp_Details_ExecStamp">
+          <End Role="ExecStamp" Type="Self.ExecStamp" Multiplicity="1" />
+          <End Role="ExecStamp_Details" Type="Self.ExecStamp_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExecStamp">
+              <PropertyRef Name="IdExecStamp" />
+            </Principal>
+            <Dependent Role="ExecStamp_Details">
+              <PropertyRef Name="ExecStamp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SOA_TechAndSolveModelStoreContainer">
+          <EntitySet Name="ExecStamp" EntityType="Self.ExecStamp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExecStamp_Details" EntityType="Self.ExecStamp_Details" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ExecStamp_Details_ExecStamp" Association="Self.FK_ExecStamp_Details_ExecStamp">
+            <End Role="ExecStamp" EntitySet="ExecStamp" />
+            <End Role="ExecStamp_Details" EntitySet="ExecStamp_Details" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SOA_TechAndSolveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ExecStamp">
+          <Key>
+            <PropertyRef Name="IdExecStamp" />
+          </Key>
+          <Property Name="IdExecStamp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identification" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateStamp" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeStamp" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="WorkingDays" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ExecStamp_Details" Relationship="Self.FK_ExecStamp_Details_ExecStamp" FromRole="ExecStamp" ToRole="ExecStamp_Details" />
+        </EntityType>
+        <EntityType Name="ExecStamp_Details">
+          <Key>
+            <PropertyRef Name="IdExecStamp_Details" />
+          </Key>
+          <Property Name="IdExecStamp_Details" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExecStamp" Type="Int32" Nullable="false" />
+          <Property Name="ElementsQuantity" Type="Int32" Nullable="false" />
+          <Property Name="ElementList" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TripsQuantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ExecStamp1" Relationship="Self.FK_ExecStamp_Details_ExecStamp" FromRole="ExecStamp_Details" ToRole="ExecStamp" />
+        </EntityType>
+        <Association Name="FK_ExecStamp_Details_ExecStamp">
+          <End Role="ExecStamp" Type="Self.ExecStamp" Multiplicity="1" />
+          <End Role="ExecStamp_Details" Type="Self.ExecStamp_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExecStamp">
+              <PropertyRef Name="IdExecStamp" />
+            </Principal>
+            <Dependent Role="ExecStamp_Details">
+              <PropertyRef Name="ExecStamp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SOA_TechAndSolveEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ExecStamp" EntityType="Self.ExecStamp" />
+          <EntitySet Name="ExecStamp_Details" EntityType="Self.ExecStamp_Details" />
+          <AssociationSet Name="FK_ExecStamp_Details_ExecStamp" Association="Self.FK_ExecStamp_Details_ExecStamp">
+            <End Role="ExecStamp" EntitySet="ExecStamp" />
+            <End Role="ExecStamp_Details" EntitySet="ExecStamp_Details" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SOA_TechAndSolveModelStoreContainer" CdmEntityContainer="SOA_TechAndSolveEntities">
+          <EntitySetMapping Name="ExecStamp">
+            <EntityTypeMapping TypeName="SOA_TechAndSolveModel.ExecStamp">
+              <MappingFragment StoreEntitySet="ExecStamp">
+                <ScalarProperty Name="IdExecStamp" ColumnName="IdExecStamp" />
+                <ScalarProperty Name="Identification" ColumnName="Identification" />
+                <ScalarProperty Name="DateStamp" ColumnName="DateStamp" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="WorkingDays" ColumnName="WorkingDays" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExecStamp_Details">
+            <EntityTypeMapping TypeName="SOA_TechAndSolveModel.ExecStamp_Details">
+              <MappingFragment StoreEntitySet="ExecStamp_Details">
+                <ScalarProperty Name="IdExecStamp_Details" ColumnName="IdExecStamp_Details" />
+                <ScalarProperty Name="ExecStamp" ColumnName="ExecStamp" />
+                <ScalarProperty Name="ElementsQuantity" ColumnName="ElementsQuantity" />
+                <ScalarProperty Name="ElementList" ColumnName="ElementList" />
+                <ScalarProperty Name="TripsQuantity" ColumnName="TripsQuantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
