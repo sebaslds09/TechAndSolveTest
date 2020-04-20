@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PruebaTecnica_SebastianOrtiz.Utils;
 
 namespace PruebaTecnica_SebastianOrtiz.Controllers
 {
@@ -17,13 +18,14 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
         }
 
         [HttpPost]
-        public FileResult ProcessData(string Identification, HttpPostedFileBase File)
+        public FileResult ProcessData(string Identification, HttpPostedFileBase FileBase)
         {
+            //Save uploaded file
             string mainPath = Server.MapPath("~/") + "Files\\";
-            if (File != null && File.ContentLength > 0)
+            if (FileBase != null && FileBase.ContentLength > 0)
             {
                 var suportedTypes = new[] { "txt" };
-                var fileExt = System.IO.Path.GetExtension(File.FileName).Substring(1);
+                var fileExt = Path.GetExtension(FileBase.FileName).Substring(1);
 
                 if(!suportedTypes.Contains(fileExt))
                 {
@@ -31,9 +33,33 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
                     return null;
                 }
 
-                var uploadedFile = Path.GetFileName(File.FileName);
-                File.SaveAs(Path.Combine(mainPath, uploadedFile));
+                FileBase.SaveAs(Path.Combine(mainPath, "dataIn.txt"));
             }
+
+            //Open file, verify data  and convert them into a list
+            IList<int> DataList = FileHelper.OpenFile(Path.Combine(mainPath, "dataIn.txt"));
+            int WorkingDays = 0;
+            IList<int> ElementsQty;
+            IList<int> ElementsWright;
+
+            if (DataList.Count < 3)
+            {
+                //Can write a log file
+                ModelState.AddModelError("file", "Invalid data file. Check data.");
+                return null;
+            }
+
+            //Split data into the different types: Working days, Elements quantity and Elements weights
+            ListSplitter.Split(DataList, out WorkingDays, out ElementsQty, out ElementsWright);
+
+            if(WorkingDays == 0 || ElementsQty.Count == 0 || ElementsWright.Count == 0)
+            {
+                ModelState.AddModelError("data", "Invalid quantity data in file");
+                return null;
+            }
+
+
+            //TODO -- process file
 
             //TODO -- Add execstamp to databse
 

@@ -8,7 +8,7 @@ class ContentBox extends React.Component {
     handleContentSubmit(e) {
         const data = new FormData();
         data.append("Identification", e.Identification);
-        data.append("File", e.File);
+        data.append("FileBase", e.File);
 
         const xhr = new XMLHttpRequest();
         xhr.open('post', this.props.submitUrl, true);
