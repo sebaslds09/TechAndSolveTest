@@ -41,6 +41,7 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
             int WorkingDays = 0;
             IList<int> ElementsQty;
             IList<int> ElementsWright;
+            IList<int> result;
 
             if (DataList.Count < 3)
             {
@@ -58,16 +59,26 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
                 return null;
             }
 
+            if(WorkingDays == ElementsQty.Count)
+            {
+                result = ActivityProcess.Execute(WorkingDays, ElementsQty, ElementsWright);
+                if (result.Count != WorkingDays)
+                {
+                    return null;
+                }
 
-            //TODO -- process file
+                if (FileHelper.CreateFile(result, Path.Combine(mainPath, "result.txt")) == FileHelper.State.Fail)
+                {
+                    return null;
+                }
 
-            //TODO -- Add execstamp to databse
+                string fileName = Path.Combine(mainPath, "result.txt");
+                string contentType = "application/octet-stream";
 
+                return new FilePathResult(fileName, contentType);
+            }
 
-            string fileName = Server.MapPath("~/") + @"Files\result.txt";
-            string contentType = "application/octet-stream";
-            
-            return new FilePathResult(fileName, contentType);
+            return null;
         }
 
 

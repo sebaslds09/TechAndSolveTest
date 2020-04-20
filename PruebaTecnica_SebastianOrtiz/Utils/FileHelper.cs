@@ -15,7 +15,7 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
         {
             try
             {
-                using (var dataInFile = File.Open(Path.Combine(path), FileMode.Open))
+                using (var dataInFile = File.Open(path, FileMode.Open))
                 {
                     try
                     {
@@ -69,6 +69,37 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
                 //Can write a log file
                 return new List<int>();
             }
+        }
+
+        /// <summary>
+        /// Create a file with process output
+        /// </summary>
+        /// <param name="cases">List of final cases</param>
+        /// <param name="path">File path</param>
+        /// <returns>Sucess or Fail </returns>
+        public static State CreateFile(IList<int> cases, string path)
+        {
+            try
+            {
+                using (var dataOutWriter = new StreamWriter(path))
+                {
+                    for(int i = 0; i < cases.Count; i++)
+                    {
+                        dataOutWriter.WriteLine(string.Format("Case #{0}: {1}", i+1, cases[i]));
+                    }
+                    return State.Sucess;
+                }
+            }
+            catch(Exception)
+            {
+                return State.Fail;
+            }
+        }
+
+        public enum State
+        {
+            Sucess,
+            Fail
         }
     }
 }

@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace PruebaTecnica_SebastianOrtiz.Utils
 {
     public static class ListSplitter
     {
+        /// <summary>
+        /// Split a integer list into 3 different element types
+        /// </summary>
+        /// <param name="dataIn">Data list to split</param>
+        /// <param name="days">Working days</param>
+        /// <param name="Elements">Elements quantity</param>
+        /// <param name="Weights">Elements weights</param>
         public static void Split(IList<int> dataIn, out int days, out IList<int> Elements, out IList<int> Weights)
         {
             days = dataIn.First();
