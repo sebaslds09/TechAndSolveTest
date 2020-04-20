@@ -13,8 +13,10 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
         /// <param name="days">Working days</param>
         /// <param name="Elements">Elements quantity</param>
         /// <param name="Weights">Elements weights</param>
-        public static void Split(IList<int> dataIn, out int days, out IList<int> Elements, out IList<int> Weights)
+        public static void Split(IList<int> DataIn, out int days, out IList<int> Elements, out IList<int> Weights)
         {
+            IList<int> dataIn = new List<int>(DataIn);
+
             days = dataIn.First();
             dataIn.RemoveAt(0);
 

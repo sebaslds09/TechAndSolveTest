@@ -1,5 +1,4 @@
-﻿using PruebaTecnica_SebastianOrtiz.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -71,6 +70,9 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
                 {
                     return null;
                 }
+
+                //Save to database
+                DataBaseHelper.SaveTrace(Identification, WorkingDays, DataList, result);
 
                 string fileName = Path.Combine(mainPath, "result.txt");
                 string contentType = "application/octet-stream";

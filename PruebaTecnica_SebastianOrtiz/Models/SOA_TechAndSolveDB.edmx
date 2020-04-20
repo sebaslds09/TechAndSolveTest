@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SOA_TechAndSolveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SOA_TechAndSolveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ExecStamp">
           <Key>
             <PropertyRef Name="IdExecStamp" />
@@ -14,6 +14,7 @@
           <Property Name="DateStamp" Type="date" Nullable="false" />
           <Property Name="TimeStamp" Type="time" Precision="7" Nullable="false" />
           <Property Name="WorkingDays" Type="int" Nullable="false" />
+          <Property Name="ElementList" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="ExecStamp_Details">
           <Key>
@@ -21,8 +22,7 @@
           </Key>
           <Property Name="IdExecStamp_Details" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ExecStamp" Type="int" Nullable="false" />
-          <Property Name="ElementsQuantity" Type="int" Nullable="false" />
-          <Property Name="ElementList" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Case" Type="int" Nullable="false" />
           <Property Name="TripsQuantity" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_ExecStamp_Details_ExecStamp">
@@ -45,21 +45,29 @@
             <End Role="ExecStamp_Details" EntitySet="ExecStamp_Details" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SOA_TechAndSolveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SOA_TechAndSolveEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ExecStamp" EntityType="SOA_TechAndSolveModel.ExecStamp" />
+          <EntitySet Name="ExecStamp_Details" EntityType="SOA_TechAndSolveModel.ExecStamp_Details" />
+          <AssociationSet Name="FK_ExecStamp_Details_ExecStamp" Association="SOA_TechAndSolveModel.FK_ExecStamp_Details_ExecStamp">
+            <End Role="ExecStamp" EntitySet="ExecStamp" />
+            <End Role="ExecStamp_Details" EntitySet="ExecStamp_Details" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="ExecStamp">
           <Key>
             <PropertyRef Name="IdExecStamp" />
           </Key>
           <Property Name="IdExecStamp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Identification" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Identification" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="DateStamp" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TimeStamp" Type="Time" Nullable="false" Precision="7" />
           <Property Name="WorkingDays" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ExecStamp_Details" Relationship="Self.FK_ExecStamp_Details_ExecStamp" FromRole="ExecStamp" ToRole="ExecStamp_Details" />
+          <Property Name="ElementList" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExecStamp_Details" Relationship="SOA_TechAndSolveModel.FK_ExecStamp_Details_ExecStamp" FromRole="ExecStamp" ToRole="ExecStamp_Details" />
         </EntityType>
         <EntityType Name="ExecStamp_Details">
           <Key>
@@ -67,14 +75,13 @@
           </Key>
           <Property Name="IdExecStamp_Details" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ExecStamp" Type="Int32" Nullable="false" />
-          <Property Name="ElementsQuantity" Type="Int32" Nullable="false" />
-          <Property Name="ElementList" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Case" Type="Int32" Nullable="false" />
           <Property Name="TripsQuantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ExecStamp1" Relationship="Self.FK_ExecStamp_Details_ExecStamp" FromRole="ExecStamp_Details" ToRole="ExecStamp" />
+          <NavigationProperty Name="ExecStamp1" Relationship="SOA_TechAndSolveModel.FK_ExecStamp_Details_ExecStamp" FromRole="ExecStamp_Details" ToRole="ExecStamp" />
         </EntityType>
         <Association Name="FK_ExecStamp_Details_ExecStamp">
-          <End Role="ExecStamp" Type="Self.ExecStamp" Multiplicity="1" />
-          <End Role="ExecStamp_Details" Type="Self.ExecStamp_Details" Multiplicity="*" />
+          <End Type="SOA_TechAndSolveModel.ExecStamp" Role="ExecStamp" Multiplicity="1" />
+          <End Type="SOA_TechAndSolveModel.ExecStamp_Details" Role="ExecStamp_Details" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ExecStamp">
               <PropertyRef Name="IdExecStamp" />
@@ -84,14 +91,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SOA_TechAndSolveEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ExecStamp" EntityType="Self.ExecStamp" />
-          <EntitySet Name="ExecStamp_Details" EntityType="Self.ExecStamp_Details" />
-          <AssociationSet Name="FK_ExecStamp_Details_ExecStamp" Association="Self.FK_ExecStamp_Details_ExecStamp">
-            <End Role="ExecStamp" EntitySet="ExecStamp" />
-            <End Role="ExecStamp_Details" EntitySet="ExecStamp_Details" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -101,22 +100,22 @@
           <EntitySetMapping Name="ExecStamp">
             <EntityTypeMapping TypeName="SOA_TechAndSolveModel.ExecStamp">
               <MappingFragment StoreEntitySet="ExecStamp">
-                <ScalarProperty Name="IdExecStamp" ColumnName="IdExecStamp" />
-                <ScalarProperty Name="Identification" ColumnName="Identification" />
-                <ScalarProperty Name="DateStamp" ColumnName="DateStamp" />
-                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="ElementList" ColumnName="ElementList" />
                 <ScalarProperty Name="WorkingDays" ColumnName="WorkingDays" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="DateStamp" ColumnName="DateStamp" />
+                <ScalarProperty Name="Identification" ColumnName="Identification" />
+                <ScalarProperty Name="IdExecStamp" ColumnName="IdExecStamp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExecStamp_Details">
             <EntityTypeMapping TypeName="SOA_TechAndSolveModel.ExecStamp_Details">
               <MappingFragment StoreEntitySet="ExecStamp_Details">
-                <ScalarProperty Name="IdExecStamp_Details" ColumnName="IdExecStamp_Details" />
-                <ScalarProperty Name="ExecStamp" ColumnName="ExecStamp" />
-                <ScalarProperty Name="ElementsQuantity" ColumnName="ElementsQuantity" />
-                <ScalarProperty Name="ElementList" ColumnName="ElementList" />
                 <ScalarProperty Name="TripsQuantity" ColumnName="TripsQuantity" />
+                <ScalarProperty Name="Case" ColumnName="Case" />
+                <ScalarProperty Name="ExecStamp" ColumnName="ExecStamp" />
+                <ScalarProperty Name="IdExecStamp_Details" ColumnName="IdExecStamp_Details" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

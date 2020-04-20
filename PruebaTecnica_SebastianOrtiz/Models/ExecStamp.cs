@@ -25,6 +25,7 @@ namespace PruebaTecnica_SebastianOrtiz.Models
         public System.DateTime DateStamp { get; set; }
         public System.TimeSpan TimeStamp { get; set; }
         public int WorkingDays { get; set; }
+        public string ElementList { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExecStamp_Details> ExecStamp_Details { get; set; }

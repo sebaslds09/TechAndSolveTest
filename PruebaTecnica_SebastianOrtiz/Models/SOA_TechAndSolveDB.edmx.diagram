@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="411ca55bbb0a4c45850a98524c522442" Name="Diagram1">
-        <EntityTypeShape EntityType="SOA_TechAndSolveModel.ExecStamp" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SOA_TechAndSolveModel.ExecStamp_Details" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="SOA_TechAndSolveModel.FK_ExecStamp_Details_ExecStamp" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SOA_TechAndSolveModel.ExecStamp" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="SOA_TechAndSolveModel.ExecStamp_Details" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="SOA_TechAndSolveModel.FK_ExecStamp_Details_ExecStamp" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

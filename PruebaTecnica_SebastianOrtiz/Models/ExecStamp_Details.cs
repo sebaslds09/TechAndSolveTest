@@ -16,8 +16,7 @@ namespace PruebaTecnica_SebastianOrtiz.Models
     {
         public int IdExecStamp_Details { get; set; }
         public int ExecStamp { get; set; }
-        public int ElementsQuantity { get; set; }
-        public string ElementList { get; set; }
+        public int Case { get; set; }
         public int TripsQuantity { get; set; }
     
         public virtual ExecStamp ExecStamp1 { get; set; }
