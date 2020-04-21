@@ -37,12 +37,9 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
                     }
                     actualWeights.Remove(actualWeights.Max());
 
-                    if (actualWeights.Count >= qty-1)
+                    for (int j = 0; actualWeights.Count >= qty - 1 -j && j < qty-1; j++)
                     {
-                        for (int j = 0; j < qty-1; j++)
-                        {
-                            actualWeights.RemoveAt(0);
-                        }
+                        actualWeights.RemoveAt(0);
                     }
                 }
                 result.Add(count);

@@ -34,6 +34,7 @@ class ContentBox extends React.Component {
         ReactDOM.render(<div />, document.getElementById('loading'));
     }
     loadStartEvent() {
+        ReactDOM.render(<div />, document.getElementById('result'));
         ReactDOM.render(<LoadingPane />, document.getElementById('loading'));
     }
     render() {

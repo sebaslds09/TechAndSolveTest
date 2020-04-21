@@ -29,7 +29,7 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
                                 data = dataInRead.ReadLine();
                                 int.TryParse(data, out dataI);
                                 //First parameter must be between 1 and 500
-                                if (dataI < 1 && dataI > 500)
+                                if (dataI < 1 || dataI > 500)
                                 {
                                     //Can write a log file
                                     return new List<int>();
@@ -40,7 +40,7 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
                                 {
                                     int.TryParse(data, out dataI);
                                     //Other data must be between 1 and 100
-                                    if (dataI < 1 && dataI > 100)
+                                    if (dataI < 1 || dataI > 100)
                                     {
                                         //Can write a log file
                                         return new List<int>();

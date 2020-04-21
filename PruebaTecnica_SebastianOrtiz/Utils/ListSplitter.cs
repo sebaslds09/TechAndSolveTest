@@ -35,6 +35,13 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
                         dataIn.RemoveAt(0);
                     }
                 }
+                //File has incorrect format
+                if(dataIn.Count > 0)
+                {
+                    days = 0;
+                    Elements = new List<int>();
+                    Weights = new List<int>();
+                }
             }
             catch (Exception)
             {
