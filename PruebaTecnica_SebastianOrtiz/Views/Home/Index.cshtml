@@ -8,14 +8,54 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <!--<link rel="stylesheet" href="@Url.Content("/Content/bootstrap.css")"/>-->
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
     <title>Index</title>
 </head>
 <body>
-    <div>
-        <div id="content"></div>
-        <script crossorigin="" src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
-        <script crossorigin="" src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
-        <script src="@Url.Content("~/Scripts/Components/Input.jsx")"></script>
+    
+    <header id="header"></header>
+    <div id="intro"></div><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row h-100">
+                    <div class="col-sm-12">
+                        <div id="case1"></div>
+                    </div>
+                    <div class="col-sm-12 align-self-end">
+                        <div id="content1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row h-100">
+                    <div class="col-sm-12">
+                        <div id="case2"></div>
+                    </div>
+                    <div class="col-sm-12 align-self-end">
+                        <div id="content2"></div>
+                    </div>
+                </div>        
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row justify-content-center">
+                    <div id="loading"></div>
+                    <div id="result"></div>
+                </div>
+            </div>
+        </div>
     </div>
+    <script crossorigin="" src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+    <script crossorigin="" src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
+            crossorigin=""></script>
+    <script src="@Url.Content("~/Scripts/Components/Input.jsx")"></script>
 </body>
 </html>

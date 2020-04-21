@@ -23,7 +23,6 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
                         {
                             IList<int> result = new List<int>();
                             string data = string.Empty;
-
                             try
                             {
                                 int dataI = 0;
@@ -83,10 +82,12 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
             {
                 using (var dataOutWriter = new StreamWriter(path))
                 {
+                    dataOutWriter.NewLine = "\n";
                     for(int i = 0; i < cases.Count; i++)
                     {
                         dataOutWriter.WriteLine(string.Format("Case #{0}: {1}", i+1, cases[i]));
                     }
+                    dataOutWriter.WriteLine();
                     return State.Sucess;
                 }
             }

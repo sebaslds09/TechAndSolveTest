@@ -17,10 +17,10 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
         }
 
         [HttpPost]
-        public FileResult ProcessData(string Identification, HttpPostedFileBase FileBase)
+        public FileResult ProcessData(string Identification, HttpPostedFileBase FileBase, int Case)
         {
             //Save uploaded file
-            string mainPath = Server.MapPath("~/") + "Files\\";
+            string mainPath = Server.MapPath("~/Files");
             if (FileBase != null && FileBase.ContentLength > 0)
             {
                 var suportedTypes = new[] { "txt" };
@@ -58,9 +58,10 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
                 return null;
             }
 
+            //Process data
             if(WorkingDays == ElementsQty.Count)
             {
-                result = ActivityProcess.Execute(WorkingDays, ElementsQty, ElementsWright);
+                result = ActivityProcess.Execute(WorkingDays, ElementsQty, ElementsWright, Case);
                 if (result.Count != WorkingDays)
                 {
                     return null;

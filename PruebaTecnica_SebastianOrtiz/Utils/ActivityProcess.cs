@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace PruebaTecnica_SebastianOrtiz.Utils
 {
@@ -14,7 +13,7 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
         /// <param name="Elements">Elements quantity</param>
         /// <param name="Weights">Elements weights</param>
         /// <returns>List with each case trips number</returns>
-        public static IList<int> Execute(int Days, IList<int> Elements, IList<int> Weights)
+        public static IList<int> Execute(int Days, IList<int> Elements, IList<int> Weights, int Case)
         {
             IList<int> result = new List<int>();
             IList<int> weights = Weights;
@@ -32,7 +31,7 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
                 {
                     decimal qty = Math.Ceiling(50 / (decimal)actualWeights.Max());
                         
-                    if (actualWeights.Max() * new List<decimal>() { qty, actualWeights.Count }.Min() >= 50)
+                    if ((actualWeights.Max() * new List<decimal>() { qty, actualWeights.Count }.Min() >= 50) || count == 0 || Case == 2)
                     {
                         count++;
                     }
