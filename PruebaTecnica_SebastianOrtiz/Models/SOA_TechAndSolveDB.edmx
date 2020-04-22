@@ -13,7 +13,7 @@
           <Property Name="Identification" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="DateStamp" Type="date" Nullable="false" />
           <Property Name="TimeStamp" Type="time" Precision="7" Nullable="false" />
-          <Property Name="WorkingDays" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="ElementList" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="ExecStamp_Details">
@@ -65,7 +65,7 @@
           <Property Name="Identification" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="DateStamp" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TimeStamp" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="WorkingDays" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="ElementList" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ExecStamp_Details" Relationship="SOA_TechAndSolveModel.FK_ExecStamp_Details_ExecStamp" FromRole="ExecStamp" ToRole="ExecStamp_Details" />
         </EntityType>
@@ -101,7 +101,7 @@
             <EntityTypeMapping TypeName="SOA_TechAndSolveModel.ExecStamp">
               <MappingFragment StoreEntitySet="ExecStamp">
                 <ScalarProperty Name="ElementList" ColumnName="ElementList" />
-                <ScalarProperty Name="WorkingDays" ColumnName="WorkingDays" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
                 <ScalarProperty Name="DateStamp" ColumnName="DateStamp" />
                 <ScalarProperty Name="Identification" ColumnName="Identification" />

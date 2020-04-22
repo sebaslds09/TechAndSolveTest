@@ -39,7 +39,7 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
             IList<int> DataList = FileHelper.OpenFile(Path.Combine(mainPath, "dataIn.txt"));
             int WorkingDays;
             IList<int> ElementsQty;
-            IList<int> ElementsWright;
+            IList<int> ElementsWeight;
             IList<int> result;
 
             if (DataList.Count < 3)
@@ -50,9 +50,9 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
             }
 
             //Split data into the different types: Working days, Elements quantity and Elements weights
-            ListSplitter.Split(DataList, out WorkingDays, out ElementsQty, out ElementsWright);
+            ListSplitter.Split(DataList, out WorkingDays, out ElementsQty, out ElementsWeight);
 
-            if(WorkingDays == 0 || ElementsQty.Count == 0 || ElementsWright.Count == 0)
+            if(WorkingDays == 0 || ElementsQty.Count == 0 || ElementsWeight.Count == 0)
             {
                 ModelState.AddModelError("data", "Invalid quantity data in file");
                 return null;
@@ -61,7 +61,7 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
             //Process data
             if(WorkingDays == ElementsQty.Count)
             {
-                result = ActivityProcess.Execute(WorkingDays, ElementsQty, ElementsWright, Case);
+                result = ActivityProcess.Execute(WorkingDays, ElementsQty, ElementsWeight, Case);
                 if (result.Count != WorkingDays)
                 {
                     return null;
@@ -73,7 +73,7 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
                 }
 
                 //Save to database
-                DataBaseHelper.SaveTrace(Identification, WorkingDays, DataList, result);
+                DataBaseHelper.SaveTrace(Identification, Case, DataList, result);
 
                 string fileName = Path.Combine(mainPath, "result.txt");
                 string contentType = "application/octet-stream";

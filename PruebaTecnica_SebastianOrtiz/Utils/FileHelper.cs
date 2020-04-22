@@ -87,7 +87,6 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
                     {
                         dataOutWriter.WriteLine(string.Format("Case #{0}: {1}", i+1, cases[i]));
                     }
-                    dataOutWriter.WriteLine();
                     return State.Sucess;
                 }
             }

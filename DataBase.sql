@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[ExecStamp](
 	[Identification] [nvarchar](15) NOT NULL,
 	[DateStamp] [date] not null,
 	[TimeStamp] [time](7) not null,
-	[WorkingDays] [int] not null,
+	[Type] [int] not null,
 	[ElementList] [nvarchar](MAX) NOT NULL,
 	CONSTRAINT [PK_ExecStamp] PRIMARY KEY ([IdExecStamp])
 )

@@ -6,14 +6,14 @@ namespace PruebaTecnica_SebastianOrtiz.Utils
 {
     public static class DataBaseHelper
     {
-        public static void SaveTrace(string Identification, int Days, IList<int> DataIn, IList<int> cases)
+        public static void SaveTrace(string Identification, int Type, IList<int> DataIn, IList<int> cases)
         {
             SOA_TechAndSolveEntities dataBaseEntities = new SOA_TechAndSolveEntities();
             ExecStamp execStamp = new ExecStamp();
             execStamp.Identification = Identification;
             execStamp.DateStamp = DateTime.Today;
             execStamp.TimeStamp = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-            execStamp.WorkingDays = Days;
+            execStamp.Type = Type;
             execStamp.ElementList = Common.ListToString(DataIn);
 
             for(int i = 0; i < cases.Count; i++)
