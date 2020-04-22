@@ -46,7 +46,7 @@ namespace PruebaTecnica_SebastianOrtiz.Tests.Controllers
                 postedFile.Setup(pf => pf.ContentLength).Returns((int)fileStream.Length);
                 postedFile.Setup(pf => pf.ContentType).Returns("text/plain");
                 postedFile.Setup(pf => pf.SaveAs(It.IsAny<string>())).Callback((string path) => {
-                    using (var dataOutWriter = new FileStream(path, FileMode.OpenOrCreate))
+                    using (var dataOutWriter = new FileStream(path, FileMode.Create))
                     {
                         fileStream.CopyTo(dataOutWriter);
                     }
@@ -87,7 +87,7 @@ namespace PruebaTecnica_SebastianOrtiz.Tests.Controllers
                 postedFile.Setup(pf => pf.ContentLength).Returns((int)fileStream.Length);
                 postedFile.Setup(pf => pf.ContentType).Returns("text/plain");
                 postedFile.Setup(pf => pf.SaveAs(It.IsAny<string>())).Callback((string path) => {
-                    using (var dataOutWriter = new FileStream(path, FileMode.OpenOrCreate))
+                    using (var dataOutWriter = new FileStream(path, FileMode.Create))
                     {
                         fileStream.CopyTo(dataOutWriter);
                     }
