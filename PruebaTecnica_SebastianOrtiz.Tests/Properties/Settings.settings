@@ -1,6 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PruebaTecnica_SebastianOrtiz.Tests.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="files_dir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\USER\source\repos\PruebaTecnica_SebastianOrtiz\TechAndSolveTest\PruebaTecnica_SebastianOrtiz\Test_Files</Value>
+    </Setting>
+    <Setting Name="server_dir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\USER\source\repos\PruebaTecnica_SebastianOrtiz\TechAndSolveTest\PruebaTecnica_SebastianOrtiz\Files</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

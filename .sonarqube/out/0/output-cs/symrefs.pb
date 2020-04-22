@@ -52,7 +52,7 @@ tC:\Users\USER\source\repos\PruebaTecnica_SebastianOrtiz\TechAndSolveTest\Prueba
  
 
 		 (É
-ÄC:\Users\USER\source\repos\PruebaTecnica_SebastianOrtiz\TechAndSolveTest\PruebaTecnica_SebastianOrtiz\Properties\AssemblyInfo.csÕ
+ÄC:\Users\USER\source\repos\PruebaTecnica_SebastianOrtiz\TechAndSolveTest\PruebaTecnica_SebastianOrtiz\Properties\AssemblyInfo.cs◊
 ~C:\Users\USER\source\repos\PruebaTecnica_SebastianOrtiz\TechAndSolveTest\PruebaTecnica_SebastianOrtiz\Utils\ActivityProcess.cs
 
  '
@@ -70,8 +70,8 @@ tC:\Users\USER\source\repos\PruebaTecnica_SebastianOrtiz\TechAndSolveTest\Prueba
 I JN O
    , -(
  ""p u$$ --  (
-   ""E H((; >((J M
-(( ((F G((Q Rè
+   ""E H((; >((M P(
+(( ((D E((I J((T Uè
 uC:\Users\USER\source\repos\PruebaTecnica_SebastianOrtiz\TechAndSolveTest\PruebaTecnica_SebastianOrtiz\Utils\Common.cs
 
  
@@ -113,16 +113,16 @@ yC:\Users\USER\source\repos\PruebaTecnica_SebastianOrtiz\TechAndSolveTest\Prueba
 SS (UU !XX %ZZ !2
 VV VV# $VV4 5XXP QXX[ \
 ff [[! '
-gg `` !≈
+gg `` !Ì
 {C:\Users\USER\source\repos\PruebaTecnica_SebastianOrtiz\TechAndSolveTest\PruebaTecnica_SebastianOrtiz\Utils\ListSplitter.cs
 
  $
 
   
-, 2. 4(
-< @ $ (** 2
-Q Y    ( 0++ (
-j q "" ,, F
-   ! ' ""$ *## (
+, 2. 42
+< @ $ ()) 11 <
+Q Y    ( 0** 22 2
+j q "" ++ 33 P
+   ! ' ""$ *## '' (
    !* +  1 2
      $ %  5 6

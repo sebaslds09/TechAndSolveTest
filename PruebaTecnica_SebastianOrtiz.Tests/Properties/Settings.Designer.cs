@@ -22,5 +22,31 @@ namespace PruebaTecnica_SebastianOrtiz.Tests.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\USER\\source\\repos\\PruebaTecnica_SebastianOrtiz\\TechAndSolveTest\\PruebaTe" +
+            "cnica_SebastianOrtiz\\Test_Files")]
+        public string files_dir {
+            get {
+                return ((string)(this["files_dir"]));
+            }
+            set {
+                this["files_dir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\USER\\source\\repos\\PruebaTecnica_SebastianOrtiz\\TechAndSolveTest\\PruebaTe" +
+            "cnica_SebastianOrtiz\\Files")]
+        public string server_dir {
+            get {
+                return ((string)(this["server_dir"]));
+            }
+            set {
+                this["server_dir"] = value;
+            }
+        }
     }
 }

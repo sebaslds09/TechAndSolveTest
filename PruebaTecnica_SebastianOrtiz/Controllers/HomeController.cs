@@ -37,7 +37,7 @@ namespace PruebaTecnica_SebastianOrtiz.Controllers
 
             //Open file, verify data  and convert them into a list
             IList<int> DataList = FileHelper.OpenFile(Path.Combine(mainPath, "dataIn.txt"));
-            int WorkingDays = 0;
+            int WorkingDays;
             IList<int> ElementsQty;
             IList<int> ElementsWright;
             IList<int> result;
